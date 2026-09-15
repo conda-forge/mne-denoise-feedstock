@@ -1,6 +1,7 @@
 context:
   name: mne-denoise
-  version: "0.0.1"
+  version: "0.0.2"
+  python_min: "3.12"
 
 package:
   name: ${{ name|lower }}
@@ -8,26 +9,33 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/mne_denoise-${{ version }}.tar.gz
-  sha256: e889979cf832b278d4fd34bcb52fc4d2852e4bc6a770bebe8d008747429e2dfe
+  sha256: cdfbfcbd67f2637c914d5fd9316b843d17fe0e4ace0686c286ea8878484e9ba1
 
 build:
   noarch: python
-  script: python -m pip install . -vv --no-deps --no-build-isolation
+  script: ${{ PYTHON }} -m pip install . -vv
   number: 0
 
 requirements:
   host:
     - python ${{ python_min }}.*
-    - setuptools >=64
-    - wheel
+    - hatch-vcs
+    - hatchling >=1.27
     - pip
   run:
     - python >=${{ python_min }}
-    - mne-base >=1.0
-    - numpy >=1.22
-    - scipy >=1.8
-    - matplotlib-base >=3.5
-    - scikit-learn >=1.1
+    - numpy >=1.26,<3
+    - scipy >=1.13
+    - scikit-learn >=1.5
+    - joblib >=1.4
+
+  run_constraints:
+    # Optional upstream integrations: constrain compatible versions without
+    # making them mandatory dependencies of the base conda package.
+    - mne-base >=1.13.0
+    - matplotlib-base >=3.8
+    - seaborn >=0.13
+    - tqdm >=4.66
 
 tests:
   - python:
@@ -39,15 +47,14 @@ tests:
       pip_check: true
 
 about:
-  homepage: https://github.com/mne-tools/mne-denoise
-  summary: Denoising Source Separation (DSS) and ZapLine algorithms for MNE-Python.
+  homepage: https://mne.tools/mne-denoise/
+  summary: Artifact removal and signal denoising for EEG and MEG.
   description: |
-    mne-denoise provides Denoising Source Separation (DSS) and ZapLine
-    algorithms for MNE-Python with signal extraction capabilities beyond
-    variance analysis.
+    mne-denoise provides artifact-suppression and signal-denoising methods
+    for EEG and MEG, with NumPy and MNE-Python integration.
   license: BSD-3-Clause
   license_file: LICENSE
-  documentation: https://mne-tools.github.io/mne-denoise/
+  documentation: https://mne.tools/mne-denoise/
   repository: https://github.com/mne-tools/mne-denoise
 
 extra:
