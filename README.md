@@ -3,28 +3,28 @@ About mne-denoise-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mne-denoise-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/mne-tools/mne-denoise
+Home: https://mne.tools/mne-denoise/
 
 Package license: BSD-3-Clause
 
-Summary: Denoising Source Separation (DSS) and ZapLine algorithms for MNE-Python.
+Summary: Artifact removal and signal denoising for EEG and MEG.
 
 Development: https://github.com/mne-tools/mne-denoise
 
-Documentation: https://mne-tools.github.io/mne-denoise/
+Documentation: https://mne.tools/mne-denoise/
 
-mne-denoise provides Denoising Source Separation (DSS) and ZapLine
-algorithms for MNE-Python with signal extraction capabilities beyond
-variance analysis.
+mne-denoise provides artifact-suppression and signal-denoising methods
+for EEG and MEG, with NumPy and MNE-Python integration.
 
 Current build status
 ====================
 
 
-<table><tr><td>All platforms:</td>
+<table><tr>
+    <td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=27345&branchName=main">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mne-denoise-feedstock?branchName=main">
+      <a href="https://github.com/conda-forge/mne-denoise-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/mne-denoise-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
     </td>
   </tr>
@@ -47,31 +47,73 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `mne-denoise` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install mne-denoise
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install mne-denoise
 ```
 
-It is possible to list all of the versions of `mne-denoise` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add mne-denoise
+# for installing globally
+pixi global install mne-denoise
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `mne-denoise` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search mne-denoise --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search mne-denoise --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search mne-denoise --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -83,6 +125,8 @@ mamba repoquery whoneeds mne-denoise --channel conda-forge
 # List dependencies of `mne-denoise`:
 mamba repoquery depends mne-denoise --channel conda-forge
 ```
+
+</details>
 
 
 About conda-forge
