@@ -1,6 +1,6 @@
 context:
   name: mne-denoise
-  version: "0.0.2"
+  version: "0.0.3"
   python_min: "3.12"
 
 package:
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/mne_denoise-${{ version }}.tar.gz
-  sha256: cdfbfcbd67f2637c914d5fd9316b843d17fe0e4ace0686c286ea8878484e9ba1
+  sha256: 8124c2186bceae2870b0297173bad56900c888a79529236a38faac2fbc3d9310
 
 build:
   noarch: python
